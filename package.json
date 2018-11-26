@@ -1,5 +1,5 @@
 {
-  "name": "test_heroku_gol",
+  "name": "programming_3",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanumanum/test-heroku-gol.git"
+    "url": "git+https://github.com/hovnaz/programming_3.git"
   },
-  "author": "hanuman",
+  "author": "hovnaz",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hanumanum/test-heroku-gol/issues"

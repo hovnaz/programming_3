@@ -1,3 +1,47 @@
+// //random
+// function randomINT(n, e) {
+//     // Variable 
+// 	var 
+// 		i,
+//         rand = 0;
+//     // function for random number
+//     function randInt(min, max) {
+//         return Math.floor(Math.random() * (max - min + 1)) + min;
+//     }
+//     // if arguments length = 1 then random number 0 to n number
+//     if (arguments.length == 1) {
+//         rand = randInt(0, n);
+//     }
+//     // else if arguments length = 2 then random number n to e
+//     else if (arguments.length == 2) {
+//         rand = randInt(n, e);
+//     }
+//     // else arguments length 3 <= number  then so choose random value from argument
+//     else {
+//         for (i = 0; i < arguments.length; i++) {
+//             rand = arguments[randInt(0, i)];
+//         }
+//     }
+//     return rand;
+// }
+
+
+
+var Grass = require("../modules_class/class_grass.js");
+var GrassEater = require("../modules_class/class_GrassEater.js");
+var preadtor = require("../modules_class/class_preadtor.js");
+var Man = require("../modules_class/class.man.js");
+var Water_Bullets = require("../modules_class/class.Water_Bullets.js");
+var Ordinary_Bullets = require("../modules_class/class.Ordinary_Bullets.js");
+var Lava_source = require("../modules_class/class_Lava_source.js");
+var Lava = require("../modules_class/class_lava.js");
+
+
+
+
+
+
+
 var
 	weather = "garun",
 	count = 0,
@@ -66,6 +110,7 @@ function setup() {
 	while (count_grass > 0) {
 		var y = Math.floor(random(heightY));
 		var x = Math.floor(random(widthX));
+		
 		if (matrix[y][x] == 0) {
 			matrix[y][x] = 1;
 			count_grass--;
@@ -140,9 +185,12 @@ function setup() {
 			}
 		}
 	}
+}
 
+var time = frameRate(5);
 
-
+function frameRate( frameCount ){
+	return 1000 / frameCount;
 }
 
 function draw() {
@@ -233,3 +281,4 @@ function draw() {
 		}
 	}
 }
+setInterval( draw, time);

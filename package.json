@@ -1,27 +1,24 @@
 {
   "name": "programming_3",
   "version": "1.0.0",
-  "description": "",
+  "description": "prog 3",
   "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hovnaz/programming_3.git"
   },
-  "author": "hovnaz",
+  "author": "Hovhannes Nazaryan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hanumanum/test-heroku-gol/issues"
+    "url": "https://github.com/hovnaz/programming_3/issues"
   },
-  "homepage": "https://tumotestgol.herokuapp.com/",
-  "dependencies": {
-    "express": "^4.16.2",
-    "socket.io": "^2.2.0"
-  },
-  "engines": {
-    "node": "4.7.2"
-  }
+  "homepage": "https://github.com/hovnaz/programming_3#readme"
 }

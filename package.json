@@ -1,15 +1,16 @@
 {
   "name": "programming_3",
   "version": "1.0.0",
-  "description": "prog 3",
-  "main": "app.js",
+  "description": "matrix game",
+  "main": "script.js",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.0",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

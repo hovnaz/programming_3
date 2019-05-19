@@ -4,48 +4,6 @@ var preadtor = require("./class_preadtor.js");
 var Water_Bullets = require("./class.Water_Bullets.js");
 var Ordinary_Bullets = require("./class.Ordinary_Bullets.js");
 
-
-
-// anpaeman petq e harcnel Hakobic te inchi server i kodi mejy kdnem chi bace 
-
-// varible for class man and down
-
-// for move  0 = up , 1 = left , 2 = right , 3 = bown : default = 0 
-var found_move = 4,
-	energe_man = 2,
-	animals_mul = 'grass',
-	// permission shoot: default = false 
-	Bullets_definitely = false,
-	Bullets_definitely_animals = false;
-	
-// choose the weapon default = ordinary_Bullets = true and water_Bullets = false
-var
-water_Bullets = false,
-	ordinary_Bullets = true,
-	// Bullets_pcs
-	water_Bullets_pcs = 100,
-	ordinary_Bullets_pcs = 50,
-	backpack_for_man = {
-		animals: {
-			grass: 0,
-			preadtor: 0,
-			GrassEater: 0,
-		},
-		bullets: {
-			waterBullets: 0,
-			ordinaryBullets: 0,
-		},
-		food: {
-			meat: 0,
-			gift_food: 0,
-		}
-	},
-	// for one shoot one click
-one_click_shoot_animals = true,
-one_click_shoot = true;
-
-
-
 //  class Man
 module.exports = class Man {
 	constructor(x, y, index) {
@@ -122,20 +80,7 @@ module.exports = class Man {
 	}
 
 
-
 	move_event(event) {
-		// document.getElementById('grass_id').innerHTML = backpack_for_man['animals']['grass'];
-		// document.getElementById('preadtor_id').innerHTML = backpack_for_man['animals']['preadtor'];
-		// document.getElementById('GrassEater_id').innerHTML = backpack_for_man['animals']['GrassEater'];
-
-		// document.getElementById('waterBullets_gift_id').innerHTML = backpack_for_man['bullets']['waterBullets'];
-		// document.getElementById('ordinaryBullets_gift_id').innerHTML = backpack_for_man['bullets']['ordinaryBullets'];
-
-		// document.getElementById('food_gift_id').innerHTML = backpack_for_man['food']['gift_food'];
-		// document.getElementById('life_id').innerHTML = energe_man;
-
-
-
 		// document.addEventListener('keydown', move_man_event);
 		move_man_event(event);
 		function move_man_event(e) {
@@ -177,7 +122,6 @@ module.exports = class Man {
 	// shoot man one click one shoot
 	shoot(event) {
 		// if click to space then shoot
-		// document.addEventListener('keydown', shoot_man_event);
 		shoot_man_event(event);
 		function shoot_man_event(e) {
 			var arr = [];
@@ -258,12 +202,14 @@ module.exports = class Man {
 
 				water_Bullets_pcs += backpack_for_man['bullets']['waterBullets'];
 				// document.getElementById('waterBullets_id').innerHTML = water_Bullets_pcs;
+
 			}
 			if (shoot_man[0] === true) {
 				var O_Bullets = new Ordinary_Bullets(x, y, 'ordinary_Bullets', sendTo);
 				ordinary_BulletsArr.push(O_Bullets);
 				ordinary_Bullets_pcs += backpack_for_man['bullets']['ordinaryBullets'];
 				// document.getElementById('ordinaryBullets_id').innerHTML = ordinary_Bullets_pcs;
+
 			}
 			matrix[this.y][this.x] = matrix[y][x];
 			matrix[y][x] = this.index;
@@ -355,8 +301,6 @@ module.exports = class Man {
 			} else if (backpack_for_man['animals']['preadtor'] > 0 && shoot_man[2] == 'preadtor') {
 				this.mul_animals()
 			}
-
-
 		}
 
 
@@ -366,7 +310,7 @@ module.exports = class Man {
 		// energe_man - global
 		if (energe_man <= 0) {
 			this.die();
-			alert('Game Over');
+			console.log('Game Over');
 
 		}
 

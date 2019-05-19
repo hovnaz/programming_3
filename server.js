@@ -14,6 +14,7 @@ server.listen(3000, function () {
 });
 
 //stex kapum en mer classery
+// my random function for int and float numbers
 var rand = require("./module_func/random.js");
 
 var Grass = require("./module/class_grass.js");
@@ -25,50 +26,49 @@ var Ordinary_Bullets = require("./module/class.Ordinary_Bullets.js");
 var Lava_source = require("./module/class_Lava_source.js");
 var Lava = require("./module/class_lava.js");
 	
-
-
-// my random function for int and float numbers
-
-
-
-// // varible for class man and down
-
-// // for move  0 = up , 1 = left , 2 = right , 3 = bown : default = 0 
-// var found_move = 4,
-// 	energe_man = 2,
-// 	animals_mul = 'grass',
-// 	// permission shoot: default = false 
-// 	Bullets_definitely = false,
-// 	Bullets_definitely_animals = false;	
-
-// // choose the weapon default = ordinary_Bullets = true and water_Bullets = false
-// var
-// water_Bullets = false,
-// 	ordinary_Bullets = true,
-// 	// Bullets_pcs
-// 	water_Bullets_pcs = 100,
-// 	ordinary_Bullets_pcs = 50,
-// 	backpack_for_man = {
-// 		animals: {
-// 			grass: 0,
-// 			preadtor: 0,
-// 			GrassEater: 0,
-// 		},
-// 		bullets: {
-// 			waterBullets: 0,
-// 			ordinaryBullets: 0,
-// 		},
-// 		food: {
-// 			meat: 0,
-// 			gift_food: 0,
-// 		}
-// 	},
-// 	// for one shoot one click
-// one_click_shoot_animals = true,
-// one_click_shoot = true;
+const fs = require('fs');
 
 
 
+
+
+// varible for class man and down
+
+// for move  0 = up , 1 = left , 2 = right , 3 = bown : default = 0 
+found_move = 4;
+
+energe_man = 2;
+animals_mul = 'grass';
+// permission shoot: default = false 
+Bullets_definitely = false;
+Bullets_definitely_animals = false;	
+
+// choose the weapon default = ordinary_Bullets = true and water_Bullets = false
+
+water_Bullets = false;
+ordinary_Bullets = true;
+// Bullets_pcs
+water_Bullets_pcs = 100;
+ordinary_Bullets_pcs = 50;
+
+backpack_for_man = {
+	animals: {
+		grass: 0,
+		preadtor: 0,
+		GrassEater: 0,
+	},
+	bullets: {
+		waterBullets: 0,
+		ordinaryBullets: 0,
+	},
+	food: {
+		meat: 0,
+		gift_food: 0,
+	}
+};
+// for one shoot one click
+one_click_shoot_animals = true;
+one_click_shoot = true;
 
 
 
@@ -225,7 +225,6 @@ for (var y = 0; y < matrix.length; y++) {
 
 //stexcum en function vor kkanchi objecteri methodnery ev kuxark matrixi masin datan script.js
 function drawserever() {
-
 	for (var i in grassArr) {
 		grassArr[i].mul();
 	}
@@ -255,15 +254,29 @@ function drawserever() {
 	io.sockets.emit("matrix", matrix);
 }
 
+// function data_time(){
+// 	let backpack_data = JSON.stringify(backpack_for_man_default);
+// 	fs.writeFile('data/backpack.json', backpack_data, (err) => {  
+//     	if (err) throw err;
+//     	console.log('Data written to file backpack');
+// 	});
+// }
+
+
+
+
+
+
+
 io.on('connection', function (socket) {
 	socket.on("send event keydown", function (event) {
-		// console.log(event);
 		event_keydown = event;
+		io.sockets.emit("statistika backpack_for_man", backpack_for_man,energe_man,[water_Bullets_pcs,ordinary_Bullets_pcs]);
 	});
 });
 
-
 setInterval(drawserever, fps);
+// setInterval(data_time, 5000);
 
 
 

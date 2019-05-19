@@ -92,10 +92,28 @@ socket.on("matrix", drawMatrix);
 
 
 
-
-
 document.addEventListener('keydown', event);
 
 function event(e) {
 	socket.emit("send event keydown", e.keyCode);
 } 
+
+function hgr(backpack,energe_man,Bullets_pcs){
+	document.getElementById('grass_id').innerHTML = backpack['animals']['grass'];
+	document.getElementById('preadtor_id').innerHTML = backpack['animals']['preadtor'];
+	document.getElementById('GrassEater_id').innerHTML = backpack['animals']['GrassEater'];
+
+	document.getElementById('waterBullets_gift_id').innerHTML = backpack['bullets']['waterBullets'];
+	document.getElementById('ordinaryBullets_gift_id').innerHTML = backpack['bullets']['ordinaryBullets'];
+
+	document.getElementById('food_gift_id').innerHTML = backpack['food']['gift_food'];
+	document.getElementById('life_id').innerHTML = energe_man;
+
+	document.getElementById('waterBullets_id').innerHTML = Bullets_pcs[0];
+	document.getElementById('ordinaryBullets_id').innerHTML = Bullets_pcs[1];
+	
+}
+
+
+
+socket.on('statistika backpack_for_man', hgr);

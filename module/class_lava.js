@@ -45,6 +45,7 @@ module.exports = class Lava {
 					for (var b in grassArr) {
 						if (this.x == grassArr[b].x && this.y == grassArr[b].y) {
 							grassArr.splice(b, 1);
+							break;
 						}
 					}
 				} else if (matrix[y][x] == 2) {
@@ -52,6 +53,7 @@ module.exports = class Lava {
 					for (var b in grassEaterArr) {
 						if (this.x == grassEaterArr[b].x && this.y == grassEaterArr[b].y) {
 							grassEaterArr.splice(b, 1);
+							break;
 						}
 					}
 				} else if (matrix[y][x] == 3) {
@@ -59,6 +61,7 @@ module.exports = class Lava {
 					for (var b in wolfArr) {
 						if (this.x == wolfArr[b].x && this.y == wolfArr[b].y) {
 							wolfArr.splice(b, 1);
+							break;
 						}
 					}
 				} else if (matrix[y][x] == 'man') {
@@ -67,6 +70,7 @@ module.exports = class Lava {
 						if (this.x == ManArr[b].x && this.y == ManArr[b].y) {
 							ManArr.splice(b, 1);
 							console.log("GAME OVER");
+							break;
 						}
 					}
 				}

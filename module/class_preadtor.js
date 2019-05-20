@@ -97,6 +97,7 @@ module.exports = class preadtor {
 			if (x == wolfArr[i].x && y == wolfArr[i].y) {
 				wolfArr.splice(i, 1);
 				this.bazm = 0;
+				break;
 			}
 		}
 	}
@@ -207,6 +208,7 @@ module.exports = class preadtor {
 							}
 							this.bazm = 0;
 						}
+						break;
 					}
 				}
 				for (var i in grassEaterArr) {
@@ -219,6 +221,7 @@ module.exports = class preadtor {
 							}
 							this.bazm = 0;
 						}
+						break;
 					}
 				}
 				this.x = x;

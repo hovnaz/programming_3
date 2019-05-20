@@ -37,7 +37,7 @@ const fs = require('fs');
 // for move  0 = up , 1 = left , 2 = right , 3 = bown : default = 0 
 found_move = 4;
 
-energe_man = 2;
+energe_man_default = 2;
 animals_mul = 'grass';
 // permission shoot: default = false 
 Bullets_definitely = false;
@@ -48,10 +48,10 @@ Bullets_definitely_animals = false;
 water_Bullets = false;
 ordinary_Bullets = true;
 // Bullets_pcs
-water_Bullets_pcs = 100;
-ordinary_Bullets_pcs = 50;
+water_Bullets_pcs_default = 100;
+ordinary_Bullets_pcs_default = 50;
 
-backpack_for_man = {
+backpack_for_man_default = {
 	animals: {
 		grass: 0,
 		preadtor: 0,
@@ -70,9 +70,23 @@ backpack_for_man = {
 one_click_shoot_animals = true;
 one_click_shoot = true;
 
+let data_backpack_bul_energe = fs.readFileSync('data/data.json'); 
+var backpack_for_man_bul_en = JSON.parse(data_backpack_bul_energe);
 
-
-
+if (backpack_for_man_bul_en['man']['energe_man'] > 0) {
+	let data_backpack = fs.readFileSync('data/backpack.json');   
+	backpack_for_man = JSON.parse(data_backpack);
+	energe_man = backpack_for_man_bul_en['man']['energe_man'];
+	water_Bullets_pcs = backpack_for_man_bul_en['man']['water_Bullets_pcs']
+	ordinary_Bullets_pcs = backpack_for_man_bul_en['man']['ordinary_Bullets_pcs']
+}
+else{
+	// erb vor kinqy zoroacav noric e skzbic e sksum xaghal
+	backpack_for_man = backpack_for_man_default;
+	energe_man = energe_man_default;
+	water_Bullets_pcs = water_Bullets_pcs_default;
+	ordinary_Bullets_pcs = ordinary_Bullets_pcs_default;
+}
 
 // sranq chgitem inchu aranc var i e petq grel ???????????????????????????????????????????????????????????????????????
 grassArr = [];
@@ -252,15 +266,28 @@ function drawserever() {
 
 	//matrixy uxarkum en clientin
 	io.sockets.emit("matrix", matrix);
-}
 
-// function data_time(){
-// 	let backpack_data = JSON.stringify(backpack_for_man_default);
-// 	fs.writeFile('data/backpack.json', backpack_data, (err) => {  
-//     	if (err) throw err;
-//     	console.log('Data written to file backpack');
-// 	});
-// }
+}
+function data_time(){
+
+	var backpack_data_bul_ = {
+		man : {
+			water_Bullets_pcs : water_Bullets_pcs,
+			ordinary_Bullets_pcs : ordinary_Bullets_pcs,
+			energe_man : energe_man
+		}
+	};
+
+
+	let backpack_data = JSON.stringify(backpack_for_man);
+	let backpack_data_ = JSON.stringify(backpack_data_bul_);
+	fs.writeFile('data/backpack.json', backpack_data, (err) => {  
+    	if (err) throw err;
+	});
+	fs.writeFile('data/data.json', backpack_data_, (err) => {  
+    	if (err) throw err;
+	});
+}
 
 
 
@@ -276,7 +303,7 @@ io.on('connection', function (socket) {
 });
 
 setInterval(drawserever, fps);
-// setInterval(data_time, 5000);
+setInterval(data_time, 5000);
 
 
 

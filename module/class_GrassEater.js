@@ -68,6 +68,7 @@ module.exports = class GrassEater {
 			if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
 				grassEaterArr.splice(i, 1);
 				this.bazm = 0;
+				break;
 			}
 		}
 	}
@@ -167,6 +168,7 @@ module.exports = class GrassEater {
 							}
 							this.bazm = 0;
 						}
+						break;
 					}
 				}
 			} else {

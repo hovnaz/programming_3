@@ -81,6 +81,7 @@ var
 			rect(size_box * x, size_box * y, size_box, size_box);
 		}
 	}
+	document.getElementById('weather').innerText = weather;
 }
 
 

@@ -114,6 +114,7 @@ module.exports = class Man {
 		for (var i in ManArr) {
 			if (this.x == ManArr[i].x && this.y == ManArr[i].y) {
 				ManArr.splice(i, 1);
+				break;
 			}
 		}
 	}

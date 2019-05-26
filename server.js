@@ -33,7 +33,7 @@ const fs = require('fs');
 
 
 // varible for class man and down
-
+game = true;
 // for move  0 = up , 1 = left , 2 = right , 3 = bown : default = 0 
 found_move = 4;
 
@@ -116,7 +116,7 @@ var
 	heightY = 25,
 	widthX = 25,
 	all_sum_percent = 20,
-	fps = 1000; // petq e banadzvov anel
+	fps = 500; // petq e banadzvov anel
 
 var percent_grass_eater = Math.ceil((all_sum_percent * 30) / 100);
 
@@ -186,14 +186,18 @@ function genMatrix(w, h) {
 			count_man--;
 		}
 	}
-	matrix[0][Math.floor(rand(matrix.length))] = 'LavaSource';
-
-	// matrix[Math.floor(rand(matrix.length))][0] = 'LavaSource';
-
-	// matrix[Math.floor(rand(matrix.length))][matrix.length - 1] = 'LavaSource';
-
-
-	// matrix[matrix.length - 1][Math.floor(rand(matrix.length))] = 'LavaSource';
+	// patahakan teghum  miaein ankunerum 
+	var rand_pos_LavaSource = rand(0,3);
+	if(rand_pos_LavaSource == 0){
+		matrix[0][Math.floor(rand(matrix.length))] = 'LavaSource';
+	}else if(rand_pos_LavaSource == 1){
+		matrix[Math.floor(rand(matrix.length))][0] = 'LavaSource';
+	}else if(rand_pos_LavaSource == 2){
+		matrix[Math.floor(rand(matrix.length))][matrix.length - 1] = 'LavaSource';
+	}else if(rand_pos_LavaSource == 3){
+		matrix[matrix.length - 1][Math.floor(rand(matrix.length))] = 'LavaSource';
+	}
+	
 
 	return matrix;
 }   
@@ -302,12 +306,23 @@ io.on('connection', function (socket) {
 	});
 });
 
-setInterval(drawserever, fps);
-setInterval(data_time, 5000);
+
+// setInterval(function(){ 
+// 	if (game === true) {
+
+// 	}
+// }, 3000);
+var matrix_draw = setInterval(drawserever, fps);
+
+var data_time_var = setInterval(data_time, 5000);
 
 
-
-
-
-
+var game_over_ = setInterval(function(){
+	if (game === false) {
+		clearInterval(matrix_draw);
+		clearInterval(data_time_var);
+		clearInterval(game_over_);			
+	}
+	console.log('Gdfgojuioj hovo');
+},10000);
 

@@ -81,7 +81,7 @@ var
 			rect(size_box * x, size_box * y, size_box, size_box);
 		}
 	}
-	document.getElementById('weather').innerText = weather;
+	$('#weather').text(weather);
 }
 
 
@@ -97,9 +97,10 @@ document.addEventListener('keydown', event);
 
 function event(e) {
 	socket.emit("send event keydown", e.keyCode);
-} 
+}
 
 function hgr(backpack,energe_man,Bullets_pcs){
+	
 	document.getElementById('grass_id').innerHTML = backpack['animals']['grass'];
 	document.getElementById('preadtor_id').innerHTML = backpack['animals']['preadtor'];
 	document.getElementById('GrassEater_id').innerHTML = backpack['animals']['GrassEater'];

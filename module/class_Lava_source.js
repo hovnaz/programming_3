@@ -60,12 +60,14 @@ module.exports = class Lava_source {
 							break;
 						}
 					}
-				} else if (matrix[y][x] == 'man') {
+				} 
+				else if (matrix[y][x] == 'man') {
 					found.push(this.directions[i]);
 					for (var b in ManArr) {
 						if (this.x == ManArr[b].x && this.y == ManArr[b].y) {
 							ManArr.splice(b, 1);
-							console.log("GAME OVER");
+							game = false;
+							console.log('man merav');
 							break;
 						}
 					}

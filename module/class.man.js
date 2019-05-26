@@ -311,6 +311,7 @@ module.exports = class Man {
 		// energe_man - global
 		if (energe_man <= 0) {
 			this.die();
+			game = false;
 			console.log('Game Over');
 
 		}

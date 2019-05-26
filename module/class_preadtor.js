@@ -202,6 +202,7 @@ module.exports = class preadtor {
 						ManArr.splice(i, 1);
 						this.multiply++;
 						console.log('GAME OVER');
+						game = false;
 						if (this.multiply == this.tact_mul) {
 							if (this.tact_weather_mul_boolean) {
 								this.mul();
